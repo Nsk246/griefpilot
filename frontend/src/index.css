@@ -14,8 +14,8 @@ html, body, #root {
 }
 
 body {
-  background-color: #07070f;
-  color: #edeaf8;
+  background-color: #080613;
+  color: #ede9f8;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,13 +23,18 @@ body {
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2e2e4a; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #2a2650; border-radius: 2px; }
+
+/* Gradient page background */
+#root {
+  background: radial-gradient(ellipse 80% 60% at 40% 0%, #160f2e 0%, #080613 55%),
+              radial-gradient(ellipse 60% 40% at 80% 100%, #0f0c22 0%, transparent 60%);
+}
 
 @keyframes waveform {
   0%, 100% { transform: scaleY(0.3); }
   50%       { transform: scaleY(1); }
 }
-
 .wave-bar {
   animation: waveform 1.2s ease-in-out infinite;
 }
@@ -43,10 +48,16 @@ body {
   50%  { opacity: 1; }
   100% { opacity: 0.4; }
 }
-.shimmer { animation: shimmer 2s ease-in-out infinite; }
+.shimmer { animation: shimmer 2.5s ease-in-out infinite; }
 
-@keyframes mic-glow {
-  0%, 100% { box-shadow: 0 0 12px 2px rgba(155, 144, 234, 0.25); }
-  50%       { box-shadow: 0 0 24px 6px rgba(155, 144, 234, 0.45); }
+@keyframes mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(155,144,234,0.3), 0 0 20px 4px rgba(155,144,234,0.15); }
+  50%       { box-shadow: 0 0 0 8px rgba(155,144,234,0), 0 0 32px 8px rgba(155,144,234,0.3); }
 }
-.mic-active { animation: mic-glow 2s ease-in-out infinite; }
+.mic-active { animation: mic-pulse 2s ease-in-out infinite; }
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.orbit-ring { animation: orbit 8s linear infinite; }
