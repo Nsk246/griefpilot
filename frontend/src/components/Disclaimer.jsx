@@ -16,7 +16,7 @@ export default function Disclaimer({ onAccept }) {
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-3 mb-3">
             <div className="w-2 h-2 rounded-full bg-lavender-400 shimmer" />
-            <span className="text-lavender-300 text-sm font-medium tracking-widest uppercase">GriefPilot</span>
+            <span className="text-lavender-200 text-sm font-semibold tracking-widest uppercase">HearMe</span>
             <div className="w-2 h-2 rounded-full bg-lavender-400 shimmer" />
           </div>
           <h1 className="text-3xl font-serif text-white font-normal leading-snug">A space to speak<br />and feel heard</h1>
@@ -24,24 +24,24 @@ export default function Disclaimer({ onAccept }) {
 
         {/* Cards */}
         <div className="space-y-3 mb-8">
-          <div className="bg-night-800 border border-night-600 rounded-2xl p-4">
-            <p className="text-xs text-lavender-300 font-medium uppercase tracking-widest mb-1">Not therapy</p>
-            <p className="text-sm text-gray-300 leading-relaxed">
+          <div className="bg-night-800 border border-night-500 rounded-2xl p-4">
+            <p className="text-xs text-lavender-200 font-semibold uppercase tracking-widest mb-1.5">Not therapy</p>
+            <p className="text-sm text-gray-200 leading-relaxed">
               HearMe is a supportive companion tool, not a licensed mental health provider or crisis service. It does not replace professional care.
             </p>
           </div>
 
-          <div className="bg-night-800 border border-night-600 rounded-2xl p-4">
-            <p className="text-xs text-lavender-300 font-medium uppercase tracking-widest mb-1">Your privacy</p>
-            <p className="text-sm text-gray-300 leading-relaxed">
+          <div className="bg-night-800 border border-night-500 rounded-2xl p-4">
+            <p className="text-xs text-lavender-200 font-semibold uppercase tracking-widest mb-1.5">Your privacy</p>
+            <p className="text-sm text-gray-200 leading-relaxed">
               Your voice is processed in real time and never stored. No recordings are saved. Your memories stay with you.
             </p>
           </div>
 
-          <div className="bg-night-700 border border-lavender-400/30 rounded-2xl p-4">
-            <p className="text-xs text-rose-grief font-medium uppercase tracking-widest mb-1">If you are in crisis</p>
-            <p className="text-sm text-gray-200 leading-relaxed">
-              Call or text <span className="text-white font-semibold">988</span> (Suicide & Crisis Lifeline) · Text <span className="text-white font-semibold">HOME</span> to <span className="text-white font-semibold">741741</span>
+          <div className="bg-night-700 border border-rose-grief/40 rounded-2xl p-4">
+            <p className="text-xs text-rose-grief font-semibold uppercase tracking-widest mb-1.5">If you are in crisis</p>
+            <p className="text-sm text-gray-100 leading-relaxed">
+              Call or text <span className="text-white font-bold">988</span> (Suicide & Crisis Lifeline) · Text <span className="text-white font-bold">HOME</span> to <span className="text-white font-bold">741741</span>
             </p>
           </div>
         </div>
@@ -50,19 +50,19 @@ export default function Disclaimer({ onAccept }) {
         <label className="flex items-start gap-3 cursor-pointer mb-6 group">
           <div
             onClick={() => setChecked(!checked)}
-            className={`mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center flex-shrink-0 transition-all duration-200 ${
+            className={`mt-0.5 w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 ${
               checked
-                ? 'bg-lavender-500 border-lavender-400'
-                : 'bg-transparent border-night-600 group-hover:border-lavender-400/50'
+                ? 'bg-lavender-500 border-lavender-400 shadow-[0_0_8px_2px_rgba(155,144,234,0.3)]'
+                : 'bg-transparent border-night-500 group-hover:border-lavender-400/70'
             }`}
           >
             {checked && (
               <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             )}
           </div>
-          <span className="text-sm text-gray-400 leading-relaxed">
+          <span className="text-sm text-gray-200 leading-relaxed">
             I understand HearMe is a companion tool, not a mental health provider. I am not currently in crisis.
           </span>
         </label>
@@ -70,16 +70,16 @@ export default function Disclaimer({ onAccept }) {
         <button
           onClick={() => checked && onAccept()}
           disabled={!checked}
-          className={`w-full py-3.5 rounded-2xl text-sm font-medium tracking-wide transition-all duration-300 ${
+          className={`w-full py-3.5 rounded-2xl text-sm font-semibold tracking-wide transition-all duration-300 ${
             checked
-              ? 'bg-lavender-500 hover:bg-lavender-400 text-white cursor-pointer'
-              : 'bg-night-700 text-gray-600 cursor-not-allowed'
+              ? 'bg-lavender-500 hover:bg-lavender-400 text-white cursor-pointer shadow-[0_4px_20px_rgba(125,112,219,0.4)] hover:shadow-[0_4px_28px_rgba(125,112,219,0.6)]'
+              : 'bg-night-700 text-gray-500 cursor-not-allowed border border-night-600'
           }`}
         >
           Begin session
         </button>
 
-        <p className="text-center text-xs text-gray-600 mt-4">
+        <p className="text-center text-xs text-gray-400 mt-4">
           Take your time. There is no rush here.
         </p>
       </motion.div>

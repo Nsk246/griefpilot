@@ -14,7 +14,7 @@ function WaveformIcon({ active }) {
         <div
           key={i}
           className={`w-0.5 rounded-full transition-all duration-300 ${
-            active ? 'bg-lavender-400 wave-bar' : 'bg-night-600 h-1'
+            active ? 'bg-lavender-300 wave-bar' : 'bg-night-500 h-1'
           }`}
           style={{ height: active ? undefined : '4px' }}
         />
@@ -40,17 +40,21 @@ export default function App() {
     <div className="min-h-screen bg-night-950 text-white flex flex-col">
 
       {/* Header */}
-      <header className="flex items-center justify-between px-5 py-4 border-b border-night-700">
+      <header className="flex items-center justify-between px-5 py-4 border-b border-night-600">
         <div className="flex items-center gap-2.5">
-          <div className={`w-1.5 h-1.5 rounded-full transition-colors ${connected ? 'bg-lavender-400' : 'bg-night-600'}`} />
-          <span className="text-sm font-medium text-lavender-300 tracking-wide">GriefPilot</span>
+          <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
+            connected
+              ? 'bg-lavender-400 shadow-[0_0_6px_2px_rgba(155,144,234,0.5)]'
+              : 'bg-night-500'
+          }`} />
+          <span className="text-sm font-semibold text-lavender-200 tracking-wide">HearMe</span>
         </div>
         <div className="flex items-center gap-3">
           <WaveformIcon active={listening} />
           {transcript.length > 0 && !sessionEnded && (
             <button
               onClick={() => { endSession(); setShowLetter(true) }}
-              className="text-xs text-gray-500 hover:text-gray-400 border border-night-600 hover:border-night-500 px-3 py-1.5 rounded-lg transition-colors"
+              className="text-xs font-medium text-gray-200 hover:text-white border border-night-500 hover:border-night-400 bg-night-700 hover:bg-night-600 px-3 py-1.5 rounded-lg transition-all duration-200"
             >
               End session
             </button>
@@ -58,7 +62,7 @@ export default function App() {
           {sessionEnded && (
             <button
               onClick={() => { resetSession(); setShowLetter(false) }}
-              className="text-xs text-lavender-300 hover:text-lavender-200 border border-lavender-400/40 hover:border-lavender-400/70 px-3 py-1.5 rounded-lg transition-colors"
+              className="text-xs font-semibold text-lavender-100 hover:text-white border border-lavender-500/60 hover:border-lavender-400 bg-lavender-500/15 hover:bg-lavender-500/30 px-3 py-1.5 rounded-lg transition-all duration-200"
             >
               New session
             </button>
@@ -70,7 +74,7 @@ export default function App() {
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
 
         {/* Left panel — Constellation + Compass */}
-        <div className="lg:w-80 xl:w-96 border-b lg:border-b-0 lg:border-r border-night-700 flex flex-col">
+        <div className="lg:w-80 xl:w-96 border-b lg:border-b-0 lg:border-r border-night-600 flex flex-col bg-night-900/50">
           <div className="flex-1 p-4 flex flex-col gap-4">
 
             {/* Compass */}
@@ -79,11 +83,11 @@ export default function App() {
             </div>
 
             {/* Divider */}
-            <div className="border-t border-night-700" />
+            <div className="border-t border-night-600" />
 
             {/* Constellation */}
             <div className="flex-1 relative min-h-48">
-              <p className="text-xs text-gray-600 uppercase tracking-widest mb-2 font-medium">Memory constellation</p>
+              <p className="text-xs text-lavender-300 uppercase tracking-widest mb-2 font-semibold">Memory constellation</p>
               <div className="absolute inset-0 top-6">
                 <Constellation nodes={nodes} />
               </div>
@@ -96,8 +100,8 @@ export default function App() {
               {[...new Set(nodes.map(n => n.emotion))].slice(0, 5).map(emotion => {
                 const node = nodes.find(n => n.emotion === emotion)
                 return (
-                  <span key={emotion} className="text-xs px-2 py-0.5 rounded-full border"
-                    style={{ borderColor: node.color + '50', color: node.color, backgroundColor: node.color + '15' }}>
+                  <span key={emotion} className="text-xs px-2.5 py-1 rounded-full border font-medium"
+                    style={{ borderColor: node.color + '80', color: node.color, backgroundColor: node.color + '20' }}>
                     {emotion}
                   </span>
                 )
@@ -112,14 +116,14 @@ export default function App() {
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 lg:p-6 space-y-6">
             {transcript.length === 0 && (
-              <div className="flex flex-col items-center justify-center h-full text-center gap-4 py-16">
-                <div className="w-12 h-12 rounded-full border border-lavender-400/20 flex items-center justify-center shimmer">
-                  <div className="w-2 h-2 rounded-full bg-lavender-400/40" />
+              <div className="flex flex-col items-center justify-center h-full text-center gap-5 py-16">
+                <div className="w-14 h-14 rounded-full border border-lavender-400/30 flex items-center justify-center shimmer bg-lavender-500/5">
+                  <div className="w-3 h-3 rounded-full bg-lavender-400/60" />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+                  <p className="text-gray-200 text-sm leading-relaxed max-w-xs">
                     Press the button below and speak.<br />
-                    There is no right way to begin.
+                    <span className="text-gray-400">There is no right way to begin.</span>
                   </p>
                 </div>
               </div>
@@ -135,18 +139,18 @@ export default function App() {
               >
                 {/* User */}
                 <div className="flex justify-end">
-                  <div className="max-w-xs lg:max-w-sm xl:max-w-md bg-night-700 rounded-2xl rounded-tr-sm px-4 py-3">
-                    <p className="text-sm text-gray-200 leading-relaxed">{turn.user}</p>
+                  <div className="max-w-xs lg:max-w-sm xl:max-w-md bg-lavender-500/15 border border-lavender-400/25 rounded-2xl rounded-tr-sm px-4 py-3">
+                    <p className="text-sm text-white leading-relaxed">{turn.user}</p>
                   </div>
                 </div>
                 {/* Assistant */}
                 <div className="flex justify-start">
                   <div className="max-w-xs lg:max-w-sm xl:max-w-md">
                     <div className="flex items-center gap-1.5 mb-1.5">
-                      <div className="w-1 h-1 rounded-full bg-lavender-400/60" />
-                      <span className="text-xs text-lavender-300/60 font-medium">GriefPilot</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-lavender-400" />
+                      <span className="text-xs text-lavender-300 font-semibold tracking-wide">HearMe</span>
                     </div>
-                    <p className="font-serif text-base text-gray-300 leading-relaxed">{turn.assistant}</p>
+                    <p className="font-serif text-base text-gray-100 leading-relaxed">{turn.assistant}</p>
                   </div>
                 </div>
               </motion.div>
@@ -154,33 +158,33 @@ export default function App() {
           </div>
 
           {/* Mic controls */}
-          <div className="border-t border-night-700 px-4 py-5 flex flex-col items-center gap-3">
+          <div className="border-t border-night-600 px-4 py-5 flex flex-col items-center gap-3 bg-night-900/40">
+            {partial && (
+              <p className="text-xs text-lavender-200 italic text-center px-4">{partial}</p>
+            )}
             <button
               onClick={listening ? stopListening : startListening}
               className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
                 listening
-                  ? 'bg-lavender-500/20 border-2 border-lavender-400'
-                  : 'bg-night-700 border-2 border-night-600 hover:border-lavender-400/50'
+                  ? 'bg-lavender-500/25 border-2 border-lavender-300 mic-active'
+                  : 'bg-night-700 border-2 border-night-500 hover:border-lavender-400 hover:bg-night-600'
               }`}
             >
               {listening && (
-                <span className="absolute inset-0 rounded-full border-2 border-lavender-400/30 animate-ping" />
+                <span className="absolute inset-0 rounded-full border-2 border-lavender-400/40 animate-ping" />
               )}
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                 <rect x="7" y="1" width="8" height="13" rx="4"
-                  fill={listening ? '#9b93ea' : '#3a3a5c'} />
+                  fill={listening ? '#b8b0f4' : '#4a4a72'} />
                 <path d="M3 10c0 4.418 3.582 8 8 8s8-3.582 8-8"
-                  stroke={listening ? '#9b93ea' : '#3a3a5c'}
+                  stroke={listening ? '#b8b0f4' : '#4a4a72'}
                   strokeWidth="1.8" strokeLinecap="round" fill="none"/>
                 <line x1="11" y1="18" x2="11" y2="21"
-                  stroke={listening ? '#9b93ea' : '#3a3a5c'}
+                  stroke={listening ? '#b8b0f4' : '#4a4a72'}
                   strokeWidth="1.8" strokeLinecap="round"/>
               </svg>
             </button>
-            {partial && (
-              <p className="text-xs text-lavender-300/70 italic mb-1 text-center px-4">{partial}</p>
-            )}
-            <p className="text-xs text-gray-600">
+            <p className="text-xs font-medium text-gray-300">
               {listening ? 'Listening — tap to pause' : 'Tap to speak'}
             </p>
           </div>
@@ -188,9 +192,9 @@ export default function App() {
       </div>
 
       {/* Footer disclaimer */}
-      <div className="border-t border-night-800 px-4 py-2 text-center">
-        <p className="text-xs text-gray-700">
-          HearMe is a companion tool, not therapy. In crisis? Call or text <span className="text-gray-600">988</span>
+      <div className="border-t border-night-600 px-4 py-2 text-center">
+        <p className="text-xs text-gray-500">
+          HearMe is a companion tool, not therapy. In crisis? Call or text <span className="text-gray-300 font-medium">988</span>
         </p>
       </div>
 
