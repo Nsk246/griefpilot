@@ -49,7 +49,7 @@ export default function App() {
   if (crisis) return <CrisisCard />
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'transparent' }}>
+    <div className="h-screen flex flex-col overflow-hidden" style={{ background: 'transparent' }}>
 
       {/* Header */}
       <header className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.06] bg-night-950/70 backdrop-blur-md sticky top-0 z-10">
@@ -91,7 +91,7 @@ export default function App() {
       </header>
 
       {/* Main layout */}
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-0">
 
         {/* Left panel */}
         <div className="lg:w-72 xl:w-80 border-b lg:border-b-0 lg:border-r border-white/[0.05] flex flex-col"
@@ -139,7 +139,7 @@ export default function App() {
         </div>
 
         {/* Right panel — Conversation */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden min-h-0">
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-5 lg:p-8 space-y-7">

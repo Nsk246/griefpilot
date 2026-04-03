@@ -84,8 +84,8 @@ async def session_ws(websocket: WebSocket):
         encoding="pcm_s16le",
         speech_model="universal-streaming-english",
         format_turns=True,
-        min_turn_silence=300,
-        max_turn_silence=1200,
+        min_turn_silence=700,
+        max_turn_silence=2500,
     )
 
     # Run AAI in executor thread — non-blocking
