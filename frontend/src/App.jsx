@@ -190,7 +190,7 @@ export default function App() {
       {/* Footer disclaimer */}
       <div className="border-t border-night-800 px-4 py-2 text-center">
         <p className="text-xs text-gray-700">
-          GriefPilot is a companion tool, not therapy. In crisis? Call or text <span className="text-gray-600">988</span>
+          HearMe is a companion tool, not therapy. In crisis? Call or text <span className="text-gray-600">988</span>
         </p>
       </div>
 

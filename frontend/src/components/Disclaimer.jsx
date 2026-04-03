@@ -19,9 +19,7 @@ export default function Disclaimer({ onAccept }) {
             <span className="text-lavender-300 text-sm font-medium tracking-widest uppercase">GriefPilot</span>
             <div className="w-2 h-2 rounded-full bg-lavender-400 shimmer" />
           </div>
-          <h1 className="text-3xl font-serif text-white font-normal leading-snug">
-            A companion for<br />what words can hold
-          </h1>
+          <h1 className="text-3xl font-serif text-white font-normal leading-snug">A space to speak<br />and feel heard</h1>
         </div>
 
         {/* Cards */}
@@ -29,7 +27,7 @@ export default function Disclaimer({ onAccept }) {
           <div className="bg-night-800 border border-night-600 rounded-2xl p-4">
             <p className="text-xs text-lavender-300 font-medium uppercase tracking-widest mb-1">Not therapy</p>
             <p className="text-sm text-gray-300 leading-relaxed">
-              GriefPilot is a supportive companion tool, not a licensed mental health provider or crisis service. It does not replace professional care.
+              HearMe is a supportive companion tool, not a licensed mental health provider or crisis service. It does not replace professional care.
             </p>
           </div>
 
@@ -65,7 +63,7 @@ export default function Disclaimer({ onAccept }) {
             )}
           </div>
           <span className="text-sm text-gray-400 leading-relaxed">
-            I understand GriefPilot is a companion tool, not a mental health provider. I am not currently in crisis.
+            I understand HearMe is a companion tool, not a mental health provider. I am not currently in crisis.
           </span>
         </label>
 
