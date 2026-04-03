@@ -149,8 +149,8 @@ export function useSession() {
       // Use AudioWorklet-compatible approach via OfflineAudioContext for resampling
       // Buffer 100ms of audio, resample to 16kHz, send as PCM16
       const BUFFER_MS = 100
-      const nativeSamples = Math.floor(nativeRate * BUFFER_MS / 1000)
-      const targetSamples = Math.floor(16000 * BUFFER_MS / 1000)
+      const nativeSamplesRaw = Math.floor(nativeRate * BUFFER_MS / 1000)
+      const nativeSamples = Math.pow(2, Math.ceil(Math.log2(nativeSamplesRaw)))
 
       const scriptNode = audioCtx.current.createScriptProcessor(nativeSamples, 1, 1)
       let nodeStarted = false
