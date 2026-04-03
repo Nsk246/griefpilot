@@ -101,6 +101,10 @@ async def session_ws(websocket: WebSocket):
         finally:
             stop_event.set()
             loop.call_soon_threadsafe(aai_ready.set)
+            try:
+                client.disconnect(terminate=True)
+            except Exception:
+                pass
             print("AAI thread done")
 
     aai_thread = threading.Thread(target=run_aai, daemon=True)
@@ -182,8 +186,4 @@ async def session_ws(websocket: WebSocket):
     finally:
         stop_event.set()
         proc_task.cancel()
-        try:
-            client.disconnect()
-        except Exception:
-            pass
         print("Session ended cleanly")

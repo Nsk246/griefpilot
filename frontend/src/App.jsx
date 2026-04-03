@@ -47,12 +47,6 @@ export default function App() {
         </div>
         <div className="flex items-center gap-3">
           <WaveformIcon active={listening} />
-          {sessionEnded && (
-            <button onClick={resetSession}
-              className="text-xs border border-lavender-400/40 text-lavender-300 px-3 py-1.5 rounded-lg hover:bg-lavender-400/10 transition-colors">
-              Start new session
-            </button>
-          )}
           {transcript.length > 0 && !sessionEnded && (
             <button
               onClick={() => { endSession(); setShowLetter(true) }}
