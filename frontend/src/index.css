@@ -14,8 +14,8 @@ html, body, #root {
 }
 
 body {
-  background-color: #0a0a0f;
-  color: #e8e6f0;
+  background-color: #07070f;
+  color: #edeaf8;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,7 +23,7 @@ body {
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #252540; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #2e2e4a; border-radius: 2px; }
 
 @keyframes waveform {
   0%, 100% { transform: scaleY(0.3); }
@@ -39,8 +39,14 @@ body {
 .wave-bar:nth-child(5) { animation-delay: 0.05s; }
 
 @keyframes shimmer {
-  0%   { opacity: 0.3; }
-  50%  { opacity: 0.7; }
-  100% { opacity: 0.3; }
+  0%   { opacity: 0.4; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.4; }
 }
 .shimmer { animation: shimmer 2s ease-in-out infinite; }
+
+@keyframes mic-glow {
+  0%, 100% { box-shadow: 0 0 12px 2px rgba(155, 144, 234, 0.25); }
+  50%       { box-shadow: 0 0 24px 6px rgba(155, 144, 234, 0.45); }
+}
+.mic-active { animation: mic-glow 2s ease-in-out infinite; }

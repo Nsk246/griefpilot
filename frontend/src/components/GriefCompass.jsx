@@ -18,7 +18,7 @@ export default function GriefCompass({ griefState }) {
       <div className="relative w-28 h-28">
         {/* Outer ring */}
         <svg className="w-full h-full" viewBox="0 0 112 112">
-          <circle cx="56" cy="56" r="50" fill="none" stroke="#1c1c2e" strokeWidth="8" />
+          <circle cx="56" cy="56" r="50" fill="none" stroke="#222238" strokeWidth="8" />
           {current && (
             <motion.circle
               cx="56" cy="56" r="50"
@@ -52,7 +52,7 @@ export default function GriefCompass({ griefState }) {
                   className="w-3 h-3 rounded-full mb-1"
                   style={{ backgroundColor: current.color }}
                 />
-                <span className="text-xs text-gray-400 font-medium">{current.label}</span>
+                <span className="text-xs text-gray-200 font-semibold">{current.label}</span>
               </motion.div>
             ) : (
               <motion.div
@@ -72,7 +72,7 @@ export default function GriefCompass({ griefState }) {
           animate={{ opacity: 1 }}
           className="text-center"
         >
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-300 font-medium">
             {griefState.dominant_emotion} · {griefState.intensity}/5
           </p>
         </motion.div>
