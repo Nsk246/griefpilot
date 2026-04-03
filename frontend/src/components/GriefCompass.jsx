@@ -18,7 +18,7 @@ export default function GriefCompass({ griefState }) {
       <div className="relative w-28 h-28">
         {/* Outer ring */}
         <svg className="w-full h-full" viewBox="0 0 112 112">
-          <circle cx="56" cy="56" r="50" fill="none" stroke="#222238" strokeWidth="8" />
+          <circle cx="56" cy="56" r="50" fill="none" stroke="rgba(48,46,82,0.6)" strokeWidth="8" />
           {current && (
             <motion.circle
               cx="56" cy="56" r="50"

@@ -5,12 +5,10 @@ export default function TheLetter({ letter, onClose }) {
   const [displayed, setDisplayed] = useState('')
   const [done, setDone] = useState(false)
   const [speaking, setSpeaking] = useState(false)
-  const indexRef = useRef(0)
   const timerRef = useRef(null)
 
   useEffect(() => {
     if (!letter) return
-    indexRef.current = 0
     setDisplayed('')
     setDone(false)
 
@@ -48,26 +46,30 @@ export default function TheLetter({ letter, onClose }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-      className="fixed inset-0 bg-night-950/95 flex items-center justify-center p-6 z-50"
+      transition={{ duration: 1.2 }}
+      className="fixed inset-0 flex items-center justify-center p-6 z-50"
+      style={{ background: 'rgba(8,6,19,0.97)', backdropFilter: 'blur(20px)' }}
     >
       <motion.div
-        initial={{ opacity: 0, y: 32 }}
+        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="w-full max-w-lg"
       >
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="w-1 h-12 bg-lavender-400/30 mx-auto mb-6 rounded-full" />
-          <p className="text-xs text-lavender-300/60 uppercase tracking-widest font-medium">A letter</p>
+        <div className="text-center mb-12">
+          <div className="w-px h-16 mx-auto mb-6 rounded-full"
+            style={{ background: 'linear-gradient(180deg, transparent, rgba(155,144,234,0.5), transparent)' }} />
+          <p className="text-[10px] text-lavender-300/50 uppercase tracking-[0.25em] font-medium">A letter</p>
         </div>
 
         {/* Letter text */}
-        <div className="min-h-40 mb-10">
-          <p className="font-serif text-lg text-gray-200 leading-relaxed text-center italic">
+        <div className="min-h-40 mb-12 px-4">
+          <p className="font-serif text-[17px] text-gray-100 leading-[2] text-center italic">
             {displayed}
-            {!done && <span className="inline-block w-0.5 h-5 bg-lavender-400/60 ml-1 animate-pulse align-middle" />}
+            {!done && (
+              <span className="inline-block w-px h-[18px] bg-lavender-400/50 ml-1 animate-pulse align-middle" />
+            )}
           </p>
         </div>
 
@@ -75,33 +77,37 @@ export default function TheLetter({ letter, onClose }) {
         <AnimatePresence>
           {done && (
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col items-center gap-4"
+              transition={{ delay: 0.6 }}
+              className="flex flex-col items-center gap-5"
             >
-              {!speaking && (
+              {!speaking ? (
                 <button
                   onClick={speak}
-                  className="flex items-center gap-2 text-sm text-lavender-300 hover:text-lavender-200 transition-colors"
+                  className="flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200"
+                  style={{
+                    color: '#c4bbf8',
+                    border: '1px solid rgba(155,144,234,0.3)',
+                    background: 'rgba(125,112,219,0.1)',
+                  }}
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M8 1a7 7 0 100 14A7 7 0 008 1zM6.5 5.5l4 2.5-4 2.5V5.5z"
-                      fill="currentColor" opacity="0.8"/>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 1a7 7 0 100 14A7 7 0 008 1zM6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/>
                   </svg>
                   Read aloud
                 </button>
-              )}
-              {speaking && (
-                <div className="flex items-center gap-1.5">
+              ) : (
+                <div className="flex items-center gap-1">
                   {[1,2,3,4,5].map(i => (
-                    <div key={i} className="wave-bar w-0.5 h-4 bg-lavender-400/60 rounded-full" />
+                    <div key={i} className="wave-bar w-[3px] h-5 rounded-full"
+                      style={{ background: 'rgba(155,144,234,0.6)' }} />
                   ))}
                 </div>
               )}
               <button
                 onClick={onClose}
-                className="text-xs text-gray-600 hover:text-gray-500 transition-colors mt-2"
+                className="text-xs text-gray-600 hover:text-gray-400 transition-colors"
               >
                 Close
               </button>
