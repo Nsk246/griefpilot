@@ -67,6 +67,7 @@ async def session_ws(websocket: WebSocket):
 
     def on_error(c, error):
         print(f"AAI error: {error}")
+        stop_event.set()
         loop.call_soon_threadsafe(aai_ready.set)
 
     def on_termination(c, event=None):
@@ -93,6 +94,7 @@ async def session_ws(websocket: WebSocket):
         try:
             client.connect(params)
             print("AAI connect returned")
+            stop_event.wait()  # block until on_termination or on_error sets it
         except Exception as e:
             if "disconnect" not in str(e).lower():
                 print(f"AAI thread: {e}")
