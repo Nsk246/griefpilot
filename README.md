@@ -2,7 +2,7 @@
 
 > A voice-first emotional companion that listens without judgment, reflects what you carry, and helps you feel less alone.
 
-HearMe is a real-time AI-powered emotional support companion. You speak — it listens, understands, and responds like a present, caring friend. No advice. No platitudes. Just genuine presence.
+HearMe is a real-time AI-powered emotional support companion. You speak and it listens, understands, and responds like a present, caring friend. No advice. No platitudes. Just genuine presence.
 
 ---
 
@@ -192,6 +192,3 @@ Open `http://localhost:3000` (or the Codespaces forwarded URL).
 
 ---
 
-## Built at
-
-Built in 6 hours as part of a hackathon challenge. Core innovation: real-time dual-signal emotion classification fused with a RAG-grounded companion response pipeline, rendered as a live memory constellation bringing together multimodal AI, voice streaming, and human-centered design to make emotional support more accessible.
